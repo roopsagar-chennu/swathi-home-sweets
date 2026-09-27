@@ -1,0 +1,2417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Swathi Home Sweets</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#fff8ed;
+    color:#3b1d0d;
+}
+
+button,input,textarea,select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+.hidden{
+    display:none !important;
+}
+
+/* ================= ENTER PAGE ================= */
+
+#enterPage{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+
+    background:
+    linear-gradient(rgba(55,18,0,.70),rgba(55,18,0,.70)),
+    url("https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1600&q=90");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.enterBox{
+    width:100%;
+    max-width:520px;
+    padding:45px 30px;
+    text-align:center;
+
+    background:rgba(255,248,235,.97);
+    border-radius:30px;
+
+    box-shadow:0 25px 70px rgba(0,0,0,.45);
+}
+
+.enterLogo{
+    font-size:65px;
+}
+
+.enterBox h1{
+    color:#a52d00;
+    font-size:42px;
+    margin:10px 0;
+}
+
+.enterBox p{
+    color:#70401d;
+    margin-bottom:28px;
+}
+
+.enterButton{
+    width:100%;
+    padding:17px;
+
+    border:0;
+    border-radius:15px;
+
+    color:white;
+    background:linear-gradient(135deg,#9c2500,#ee7900);
+
+    font-size:20px;
+    font-weight:bold;
+
+    box-shadow:0 8px 20px rgba(120,40,0,.25);
+}
+
+.enterButton:hover{
+    transform:scale(1.02);
+}
+
+/* ================= LOGIN ================= */
+
+#loginPage{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+
+    background:linear-gradient(135deg,#fff0d5,#ffd19b);
+}
+
+.loginBox{
+    width:100%;
+    max-width:440px;
+
+    background:white;
+
+    padding:35px 28px;
+
+    border-radius:25px;
+
+    box-shadow:0 20px 60px rgba(100,40,0,.25);
+}
+
+.loginLogo{
+    text-align:center;
+    font-size:48px;
+}
+
+.loginBox h2{
+    text-align:center;
+    color:#a32b00;
+    margin-top:5px;
+}
+
+.loginSub{
+    text-align:center;
+    color:#777;
+    margin:8px 0 25px;
+}
+
+.field{
+    margin-bottom:16px;
+}
+
+.field label{
+    display:block;
+    margin-bottom:7px;
+    font-weight:bold;
+}
+
+.field input,
+.field textarea,
+.field select{
+    width:100%;
+    padding:13px;
+
+    border:1px solid #ddd;
+    border-radius:11px;
+
+    outline:none;
+}
+
+.field textarea{
+    min-height:90px;
+    resize:vertical;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus{
+    border-color:#d15b17;
+}
+
+.loginButton{
+    width:100%;
+    padding:14px;
+
+    border:0;
+    border-radius:12px;
+
+    background:#a52d00;
+    color:white;
+
+    font-weight:bold;
+}
+
+.loginButton:hover{
+    background:#7e2100;
+}
+
+.loginError{
+    color:#d00000;
+    text-align:center;
+    margin-top:12px;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:50;
+
+    padding:16px;
+
+    color:white;
+
+    background:linear-gradient(135deg,#972500,#e66c00);
+
+    box-shadow:0 3px 15px rgba(0,0,0,.2);
+}
+
+.headerInner{
+    max-width:1150px;
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.headerTitle{
+    font-size:25px;
+    font-weight:bold;
+}
+
+.logoutButton{
+    padding:8px 13px;
+
+    background:transparent;
+    color:white;
+
+    border:1px solid white;
+    border-radius:9px;
+}
+
+.logoutButton:hover{
+    background:white;
+    color:#9b2900;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    max-width:1150px;
+    margin:20px auto;
+
+    padding:35px 20px;
+
+    border-radius:25px;
+
+    text-align:center;
+
+    background:linear-gradient(135deg,#ffe3b2,#fff8e8);
+}
+
+.hero h2{
+    color:#a52c00;
+    font-size:30px;
+}
+
+.hero p{
+    margin-top:8px;
+    color:#70401d;
+}
+
+/* ================= FILTER ================= */
+
+.filters{
+    max-width:1150px;
+    margin:20px auto;
+    padding:0 15px;
+
+    display:flex;
+    gap:8px;
+
+    overflow-x:auto;
+}
+
+.filterButton{
+    white-space:nowrap;
+
+    padding:10px 16px;
+
+    border:0;
+    border-radius:20px;
+
+    background:#ffe0b5;
+    color:#66300f;
+}
+
+.filterButton.active{
+    background:#a52c00;
+    color:white;
+}
+
+/* ================= SWEETS ================= */
+
+.container{
+    max-width:1150px;
+    margin:auto;
+    padding:0 15px;
+}
+
+.sweetsGrid{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(245px,1fr));
+    gap:20px;
+}
+
+.sweetCard{
+    background:white;
+
+    border-radius:20px;
+    overflow:hidden;
+
+    border:1px solid #f0dcc7;
+
+    box-shadow:0 5px 20px rgba(70,25,0,.10);
+
+    transition:.2s;
+}
+
+.sweetCard:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 30px rgba(70,25,0,.18);
+}
+
+.sweetImage{
+    width:100%;
+    height:205px;
+
+    display:block;
+
+    object-fit:cover;
+
+    background:#eee;
+}
+
+.sweetBody{
+    padding:16px;
+}
+
+.sweetName{
+    color:#9d2b00;
+
+    font-size:21px;
+    font-weight:bold;
+
+    margin-bottom:5px;
+}
+
+.starsSmall{
+    color:#f3a400;
+    font-size:14px;
+}
+
+.packInfo{
+    margin-top:10px;
+
+    padding:10px;
+
+    border-radius:10px;
+
+    background:#fff2d7;
+
+    font-size:14px;
+    line-height:1.6;
+}
+
+.typeButtons{
+    display:flex;
+    gap:8px;
+
+    margin-top:12px;
+}
+
+.typeButton{
+    flex:1;
+
+    padding:9px;
+
+    border-radius:9px;
+
+    border:1px solid #b95b22;
+
+    background:white;
+    color:#8a2c00;
+}
+
+.typeButton.selected{
+    background:#a52c00;
+    color:white;
+}
+
+.priceBox{
+    margin-top:12px;
+
+    font-size:20px;
+    font-weight:bold;
+}
+
+.priceBox small{
+    font-size:13px;
+    color:#777;
+}
+
+.quantityRow{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+
+    margin-top:13px;
+}
+
+.quantityButton{
+    width:38px;
+    height:38px;
+
+    border:0;
+    border-radius:9px;
+
+    background:#a52c00;
+    color:white;
+
+    font-size:21px;
+}
+
+.quantityButton:hover{
+    background:#7e2100;
+}
+
+.quantityInput{
+    width:80px;
+
+    padding:9px;
+
+    text-align:center;
+
+    border:1px solid #ddd;
+    border-radius:9px;
+}
+
+.itemTotal{
+    margin-top:10px;
+
+    font-weight:bold;
+    line-height:1.5;
+}
+
+/* ================= ORDER ================= */
+
+.orderBox{
+    max-width:750px;
+    margin:35px auto;
+
+    padding:25px;
+
+    background:white;
+
+    border-radius:22px;
+
+    box-shadow:0 6px 25px rgba(0,0,0,.08);
+}
+
+.orderBox h2{
+    color:#a32b00;
+    margin-bottom:18px;
+}
+
+.selectedItem{
+    padding:10px;
+
+    margin-bottom:7px;
+
+    background:#fff3dc;
+
+    border-radius:9px;
+
+    font-size:14px;
+}
+
+.grandTotal{
+    margin-top:15px;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    background:#fff0d0;
+
+    color:#8d2700;
+
+    font-size:24px;
+    font-weight:bold;
+}
+
+.whatsappButton{
+    width:100%;
+
+    margin-top:14px;
+
+    padding:16px;
+
+    border:0;
+    border-radius:12px;
+
+    background:#168c3d;
+    color:white;
+
+    font-size:17px;
+    font-weight:bold;
+}
+
+.whatsappButton:hover{
+    background:#0d6d2e;
+}
+
+/* ================= RATING ================= */
+
+.ratingSection{
+    max-width:750px;
+
+    margin:35px auto 100px;
+
+    padding:28px;
+
+    background:white;
+
+    border-radius:22px;
+
+    text-align:center;
+
+    box-shadow:0 6px 25px rgba(0,0,0,.08);
+}
+
+.ratingSection h2{
+    color:#a32b00;
+}
+
+.ratingSection p{
+    margin-top:7px;
+    color:#666;
+}
+
+.starContainer{
+    display:flex;
+
+    justify-content:center;
+
+    gap:6px;
+
+    margin:18px 0;
+}
+
+.ratingStar{
+    font-size:42px;
+
+    color:#ccc;
+
+    cursor:pointer;
+}
+
+.ratingStar.active{
+    color:#ffb000;
+}
+
+.reviewBox{
+    width:100%;
+
+    min-height:100px;
+
+    padding:13px;
+
+    border:1px solid #ddd;
+    border-radius:12px;
+
+    resize:vertical;
+}
+
+.submitRating{
+    margin-top:12px;
+
+    padding:12px 25px;
+
+    border:0;
+    border-radius:10px;
+
+    background:#a32b00;
+    color:white;
+
+    font-weight:bold;
+}
+
+.ratingMessage{
+    margin-top:12px;
+
+    color:#168c3d;
+
+    font-weight:bold;
+}
+
+/* ================= BOTTOM NAV ================= */
+
+.bottomNav{
+    position:fixed;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    z-index:100;
+
+    display:flex;
+    justify-content:center;
+
+    gap:35px;
+
+    padding:9px;
+
+    background:white;
+
+    box-shadow:0 -3px 15px rgba(0,0,0,.12);
+}
+
+.navButton{
+    border:0;
+    background:white;
+
+    color:#71320f;
+
+    text-align:center;
+}
+
+.navIcon{
+    display:block;
+    font-size:22px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:600px){
+
+    .enterBox h1{
+        font-size:34px;
+    }
+
+    .hero h2{
+        font-size:25px;
+    }
+
+    .sweetsGrid{
+        grid-template-columns:1fr;
+    }
+
+    .bottomNav{
+        gap:18px;
+    }
+
+    .navButton{
+        font-size:12px;
+    }
+
+    .headerTitle{
+        font-size:19px;
+    }
+
+    .orderBox,
+    .ratingSection{
+        margin-left:12px;
+        margin-right:12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     ENTER PAGE
+===================================================== -->
+
+<section id="enterPage">
+
+    <div class="enterBox">
+
+        <div class="enterLogo">
+            🍬
+        </div>
+
+        <h1>
+            Swathi Home Sweets
+        </h1>
+
+        <p>
+            Traditional Taste • Fresh Sweets • Happy Moments
+        </p>
+
+        <button
+            type="button"
+            class="enterButton"
+            onclick="showLogin(); return false;">
+
+            ENTER SHOP →
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     LOGIN PAGE
+===================================================== -->
+
+<section id="loginPage" class="hidden">
+
+    <div class="loginBox">
+
+        <div class="loginLogo">
+            🍬
+        </div>
+
+        <h2>
+            Swathi Home Sweets
+        </h2>
+
+        <p class="loginSub">
+            Login to order your favourite sweets
+        </p>
+
+        <div class="field">
+
+            <label>
+                Language
+            </label>
+
+            <select id="language">
+
+                <option value="English">
+                    English
+                </option>
+
+                <option value="Telugu">
+                    తెలుగు
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="field">
+
+            <label>
+                Name
+            </label>
+
+            <input
+                id="loginName"
+                type="text"
+                placeholder="Enter your name">
+
+        </div>
+
+        <div class="field">
+
+            <label>
+                Phone Number
+            </label>
+
+            <input
+                id="loginPhone"
+                type="tel"
+                maxlength="10"
+                placeholder="10 digit mobile number">
+
+        </div>
+
+        <div class="field">
+
+            <label>
+                Password
+            </label>
+
+            <input
+                id="loginPassword"
+                type="password"
+                placeholder="Enter password">
+
+        </div>
+
+        <button
+            type="button"
+            class="loginButton"
+            onclick="login(); return false;">
+
+            LOGIN & CONTINUE
+
+        </button>
+
+        <div
+            id="loginError"
+            class="loginError">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MAIN APP
+===================================================== -->
+
+<section id="app" class="hidden">
+
+<header>
+
+    <div class="headerInner">
+
+        <div class="headerTitle">
+            🍬 Swathi Home Sweets
+        </div>
+
+        <button
+            type="button"
+            class="logoutButton"
+            onclick="logout()">
+
+            Logout
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<div class="hero">
+
+    <h2>
+        Sweetness for Every Celebration 🎉
+    </h2>
+
+    <p>
+        Marriage • Birthday • Function • Festival
+    </p>
+
+</div>
+
+
+<!-- OCCASIONS -->
+
+<div class="filters">
+
+    <button
+        type="button"
+        class="filterButton active"
+        onclick="filterSweets('All',this)">
+
+        All
+
+    </button>
+
+    <button
+        type="button"
+        class="filterButton"
+        onclick="filterSweets('Marriage',this)">
+
+        💍 Marriage
+
+    </button>
+
+    <button
+        type="button"
+        class="filterButton"
+        onclick="filterSweets('Birthday',this)">
+
+        🎂 Birthday
+
+    </button>
+
+    <button
+        type="button"
+        class="filterButton"
+        onclick="filterSweets('Function',this)">
+
+        🎊 Function
+
+    </button>
+
+    <button
+        type="button"
+        class="filterButton"
+        onclick="filterSweets('Festival',this)">
+
+        🪔 Festival
+
+    </button>
+
+</div>
+
+
+<!-- SWEETS -->
+
+<div class="container">
+
+    <div
+        id="sweetsGrid"
+        class="sweetsGrid">
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     ORDER SECTION
+===================================================== -->
+
+<div
+    id="orderSection"
+    class="orderBox">
+
+    <h2>
+        📦 Delivery Details
+    </h2>
+
+    <div id="selectedItems">
+
+        <div class="selectedItem">
+            No sweets selected yet.
+        </div>
+
+    </div>
+
+
+    <div class="field">
+
+        <label>
+            Customer Name
+        </label>
+
+        <input
+            id="customerName"
+            placeholder="Enter full name">
+
+    </div>
+
+
+    <div class="field">
+
+        <label>
+            Phone Number
+        </label>
+
+        <input
+            id="customerPhone"
+            maxlength="10"
+            placeholder="10 digit phone number">
+
+    </div>
+
+
+    <div class="field">
+
+        <label>
+            Village / Town
+        </label>
+
+        <input
+            id="village"
+            placeholder="Village / Town">
+
+    </div>
+
+
+    <div class="field">
+
+        <label>
+            Pincode
+        </label>
+
+        <input
+            id="pincode"
+            maxlength="6"
+            placeholder="6 digit pincode">
+
+    </div>
+
+
+    <div class="field">
+
+        <label>
+            Full Address
+        </label>
+
+        <textarea
+            id="address"
+            placeholder="House number, street, village/town..."></textarea>
+
+    </div>
+
+
+    <div class="field">
+
+        <label>
+            Special Instructions
+        </label>
+
+        <textarea
+            id="notes"
+            placeholder="Any special request?"></textarea>
+
+    </div>
+
+
+    <div class="grandTotal">
+
+        Total:
+        ₹<span id="grandTotal">0</span>
+
+    </div>
+
+
+    <button
+        type="button"
+        class="whatsappButton"
+        onclick="placeOrder()">
+
+        📱 ORDER ON WHATSAPP
+
+    </button>
+
+</div>
+
+
+<!-- =====================================================
+     RATING
+===================================================== -->
+
+<div
+    id="ratingSection"
+    class="ratingSection">
+
+    <h2>
+        ⭐ Rate Swathi Home Sweets
+    </h2>
+
+    <p>
+        How was your experience?
+    </p>
+
+
+    <div class="starContainer">
+
+        <span
+            class="ratingStar"
+            onclick="setRating(1)">
+            ★
+        </span>
+
+        <span
+            class="ratingStar"
+            onclick="setRating(2)">
+            ★
+        </span>
+
+        <span
+            class="ratingStar"
+            onclick="setRating(3)">
+            ★
+        </span>
+
+        <span
+            class="ratingStar"
+            onclick="setRating(4)">
+            ★
+        </span>
+
+        <span
+            class="ratingStar"
+            onclick="setRating(5)">
+            ★
+        </span>
+
+    </div>
+
+
+    <textarea
+        id="review"
+        class="reviewBox"
+        placeholder="Write your review..."></textarea>
+
+
+    <button
+        type="button"
+        class="submitRating"
+        onclick="submitRating()">
+
+        Submit Rating ⭐
+
+    </button>
+
+
+    <div
+        id="ratingMessage"
+        class="ratingMessage">
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     BOTTOM NAV
+===================================================== -->
+
+<div
+    id="bottomNav"
+    class="bottomNav hidden">
+
+    <button
+        type="button"
+        class="navButton"
+        onclick="goHome()">
+
+        <span class="navIcon">
+            🏠
+        </span>
+
+        Home
+
+    </button>
+
+
+    <button
+        type="button"
+        class="navButton"
+        onclick="goSweets()">
+
+        <span class="navIcon">
+            🍬
+        </span>
+
+        Sweets
+
+    </button>
+
+
+    <button
+        type="button"
+        class="navButton"
+        onclick="goOrder()">
+
+        <span class="navIcon">
+            🛒
+        </span>
+
+        Order
+
+    </button>
+
+
+    <button
+        type="button"
+        class="navButton"
+        onclick="goRating()">
+
+        <span class="navIcon">
+            ⭐
+        </span>
+
+        Rating
+
+    </button>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   SWEETS
+===================================================== */
+
+const sweets = [
+
+{
+    id:1,
+    name:"Motichoor Laddu",
+    single:20,
+    packPrice:180,
+    packPieces:10,
+    occasions:["Marriage","Birthday","Function","Festival"],
+    image:"https://lynkfoods.com/cdn/shop/articles/Motichoor_Ladoo_blog_2dd47e82-d240-4dc2-8263-1b103febfe17.jpg?v=1763378898"
+},
+
+{
+    id:2,
+    name:"Jangri",
+    single:25,
+    packPrice:120,
+    packPieces:5,
+    occasions:["Marriage","Function","Festival"],
+    image:"https://snapcalorie-webflow-website.s3.us-east-2.amazonaws.com/media/food_pics_v2/medium/jangri.jpg"
+},
+
+{
+    id:3,
+    name:"Mysore Pak",
+    single:25,
+    packPrice:135,
+    packPieces:6,
+    occasions:["Marriage","Birthday","Function","Festival"],
+    image:"https://www.kartiksmithai.com/cdn/shop/products/Untitleddesign-2022-03-15T175644.751_da4faf8c-1bc8-4f57-99c4-9b52354319f0.png?v=1647526031&width=1445"
+},
+
+{
+    id:4,
+    name:"Kaju Katli",
+    single:35,
+    packPrice:230,
+    packPieces:10,
+    occasions:["Marriage","Birthday","Festival"],
+    image:"https://i.pinimg.com/originals/3b/c8/78/3bc8781b712f33d116858dfb6920dc52.jpg"
+},
+
+{
+    id:5,
+    name:"Gulab Jamun",
+    single:18,
+    packPrice:150,
+    packPieces:10,
+    occasions:["Marriage","Birthday","Function","Festival"],
+    image:"https://thenirvana-in.ucj.omu.mybluehostin.me/uploads/2020/06/31889689_1593199646_gulab-jamun-recipe-2-1.jpg"
+},
+
+{
+    id:6,
+    name:"Rasgulla",
+    single:15,
+    packPrice:80,
+    packPieces:10,
+    occasions:["Marriage","Birthday","Function","Festival"],
+    image:"https://assets.telegraphindia.com/abp/2025/Sep/1757071088_roso.jpg"
+},
+
+{
+    id:7,
+    name:"Boondi Laddu",
+    single:20,
+    packPrice:98,
+    packPieces:6,
+    occasions:["Marriage","Birthday","Function","Festival"],
+    image:"https://www.sweedesi.com/cdn/shop/products/chogani-laddu-bmb-bhagat-mishthan-bhandar-766825_1024x1024.png?v=1771349530"
+},
+
+{
+    id:8,
+    name:"Badusha",
+    single:25,
+    packPrice:123,
+    packPieces:5,
+    occasions:["Marriage","Function","Festival"],
+    image:"https://farm3.staticflickr.com/2945/15480510681_3f129a63f6_z.jpg"
+},
+
+{
+    id:9,
+    name:"Jalebi",
+    single:15,
+    packPrice:123,
+    packPieces:10,
+    occasions:["Birthday","Function","Festival"],
+    image:"https://phoranmasala.com/cdn/shop/articles/jalebi_35209d99-fd5f-4a59-8494-e6a5ff989d5e.png?v=1759558981&width=1500"
+},
+
+{
+    id:10,
+    name:"Rava Laddu",
+    single:25,
+    packPrice:110,
+    packPieces:5,
+    occasions:["Marriage","Birthday","Festival"],
+    image:"https://chefadora-production.s3.ap-southeast-2.amazonaws.com/medium_1000006920_c373390242.jpg"
+},
+
+{
+    id:11,
+    name:"Milk Peda",
+    single:15,
+    packPrice:110,
+    packPieces:10,
+    occasions:["Marriage","Birthday","Function","Festival"],
+    image:"https://www.lalsweets.com/cdn/shop/files/MilkPeda.png?v=1772878572&width=1445"
+},
+
+{
+    id:12,
+    name:"Coconut Burfi",
+    single:20,
+    packPrice:150,
+    packPieces:10,
+    occasions:["Marriage","Birthday","Festival"],
+    image:"https://rakskitchen.net/wp-content/uploads/2012/08/7696032080_f44b95e7bc_z.jpg"
+},
+
+{
+    id:13,
+    name:"Mango Burfi",
+    single:25,
+    packPrice:160,
+    packPieces:10,
+    occasions:["Birthday","Function","Festival"],
+    image:"https://www.shreemahalakshmisweets.com/_next/image?q=75&url=https%3A%2F%2Fsri-mahalaxmi-sweets-images.s3.eu-north-1.amazonaws.com%2Fproductimages%2Fkesarburfi+.webp&w=640"
+},
+
+{
+    id:14,
+    name:"Doodh Peda",
+    single:18,
+    packPrice:120,
+    packPieces:10,
+    occasions:["Marriage","Birthday","Function","Festival"],
+    image:"https://shreevaishnavisweets.com/cdn/shop/files/DoodhPeda.jpg"
+},
+
+{
+    id:15,
+    name:"Pal Kova",
+    single:25,
+    packPrice:140,
+    packPieces:8,
+    occasions:["Marriage","Birthday","Festival"],
+    image:"https://snackattack.in/images/products/0674a654-c603-4396-b74b-556594c719abthumb.png"
+}
+
+];
+
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+let cart = {};
+
+let currentRating = 0;
+
+let currentFilter = "All";
+
+
+/* =====================================================
+   SHOW LOGIN
+===================================================== */
+
+function showLogin(){
+
+    document
+    .getElementById("enterPage")
+    .classList
+    .add("hidden");
+
+    document
+    .getElementById("loginPage")
+    .classList
+    .remove("hidden");
+
+    window.scrollTo(0,0);
+
+}
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+function login(){
+
+    const name =
+        document
+        .getElementById("loginName")
+        .value
+        .trim();
+
+    const phone =
+        document
+        .getElementById("loginPhone")
+        .value
+        .trim();
+
+    const password =
+        document
+        .getElementById("loginPassword")
+        .value;
+
+    const error =
+        document
+        .getElementById("loginError");
+
+
+    if(!name){
+
+        error.innerText =
+        "Please enter your name.";
+
+        return;
+
+    }
+
+
+    if(!/^[0-9]{10}$/.test(phone)){
+
+        error.innerText =
+        "Please enter valid 10 digit phone number.";
+
+        return;
+
+    }
+
+
+    if(password.length < 4){
+
+        error.innerText =
+        "Password must contain at least 4 characters.";
+
+        return;
+
+    }
+
+
+    const user = {
+
+        name:name,
+        phone:phone
+
+    };
+
+
+    localStorage.setItem(
+        "swathiUser",
+        JSON.stringify(user)
+    );
+
+
+    openApp();
+
+}
+
+
+/* =====================================================
+   OPEN APP
+===================================================== */
+
+function openApp(){
+
+    document
+    .getElementById("enterPage")
+    .classList
+    .add("hidden");
+
+    document
+    .getElementById("loginPage")
+    .classList
+    .add("hidden");
+
+    document
+    .getElementById("app")
+    .classList
+    .remove("hidden");
+
+    document
+    .getElementById("bottomNav")
+    .classList
+    .remove("hidden");
+
+
+    const user =
+        JSON.parse(
+            localStorage.getItem("swathiUser")
+            || "null"
+        );
+
+
+    if(user){
+
+        document
+        .getElementById("customerName")
+        .value = user.name;
+
+        document
+        .getElementById("customerPhone")
+        .value = user.phone;
+
+    }
+
+
+    renderSweets();
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function logout(){
+
+    localStorage.removeItem("swathiUser");
+
+    cart = {};
+
+    currentRating = 0;
+
+    currentFilter = "All";
+
+    document
+    .getElementById("app")
+    .classList
+    .add("hidden");
+
+    document
+    .getElementById("bottomNav")
+    .classList
+    .add("hidden");
+
+    document
+    .getElementById("loginPage")
+    .classList
+    .add("hidden");
+
+    document
+    .getElementById("enterPage")
+    .classList
+    .remove("hidden");
+
+    window.scrollTo(0,0);
+
+}
+
+
+/* =====================================================
+   FILTER
+===================================================== */
+
+function filterSweets(value,button){
+
+    currentFilter = value;
+
+    document
+    .querySelectorAll(".filterButton")
+    .forEach(btn=>{
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    renderSweets();
+
+}
+
+
+/* =====================================================
+   RENDER SWEETS
+===================================================== */
+
+function renderSweets(){
+
+    const grid =
+        document.getElementById("sweetsGrid");
+
+    grid.innerHTML = "";
+
+
+    sweets.forEach(sweet=>{
+
+        if(
+            currentFilter !== "All" &&
+            !sweet.occasions.includes(currentFilter)
+        ){
+
+            return;
+
+        }
+
+
+        const item =
+            cart[sweet.id]
+            ||
+            {
+                type:"single",
+                qty:0
+            };
+
+
+        const unitPrice =
+            item.type === "single"
+            ? sweet.single
+            : sweet.packPrice;
+
+
+        const total =
+            unitPrice * item.qty;
+
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "sweetCard";
+
+
+        card.innerHTML = `
+
+            <img
+                class="sweetImage"
+                src="${sweet.image}"
+                alt="${sweet.name}"
+                onerror="imageError(this,'${sweet.name}')"
+            >
+
+            <div class="sweetBody">
+
+                <div class="sweetName">
+                    ${sweet.name}
+                </div>
+
+                <div class="starsSmall">
+                    ⭐⭐⭐⭐⭐
+                </div>
+
+                <div class="packInfo">
+
+                    🍬 <b>Single:</b>
+                    ₹${sweet.single} / piece
+
+                    <br>
+
+                    📦 <b>1 Pack:</b>
+                    ${sweet.packPieces} pieces
+
+                    <br>
+
+                    💰 <b>Pack Price:</b>
+                    ₹${sweet.packPrice}
+
+                </div>
+
+
+                <div class="typeButtons">
+
+                    <button
+                        type="button"
+                        class="typeButton ${
+                            item.type === "single"
+                            ? "selected"
+                            : ""
+                        }"
+                        onclick="changeType(${sweet.id},'single')">
+
+                        Single
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="typeButton ${
+                            item.type === "pack"
+                            ? "selected"
+                            : ""
+                        }"
+                        onclick="changeType(${sweet.id},'pack')">
+
+                        Pack
+
+                    </button>
+
+                </div>
+
+
+                <div class="priceBox">
+
+                    ₹${unitPrice}
+
+                    <small>
+                        /
+                        ${
+                            item.type === "single"
+                            ? "piece"
+                            : "pack"
+                        }
+                    </small>
+
+                </div>
+
+
+                <div class="quantityRow">
+
+                    <button
+                        type="button"
+                        class="quantityButton"
+                        onclick="changeQuantity(${sweet.id},-1)">
+
+                        −
+
+                    </button>
+
+
+                    <input
+                        class="quantityInput"
+                        type="number"
+                        min="0"
+                        value="${item.qty}"
+                        onchange="setQuantity(${sweet.id},this.value)"
+                    >
+
+
+                    <button
+                        type="button"
+                        class="quantityButton"
+                        onclick="changeQuantity(${sweet.id},1)">
+
+                        +
+
+                    </button>
+
+                </div>
+
+
+                <div class="itemTotal">
+
+                    ${
+                        item.type === "pack"
+                        ?
+                        `🍬 Total Pieces:
+                        ${item.qty * sweet.packPieces}
+                        <br>`
+                        : ""
+                    }
+
+                    Item Total:
+                    ₹${total}
+
+                </div>
+
+            </div>
+        `;
+
+
+        grid.appendChild(card);
+
+    });
+
+
+    updateOrderSummary();
+
+}
+
+
+/* =====================================================
+   IMAGE ERROR
+===================================================== */
+
+function imageError(img,name){
+
+    img.src =
+        "https://placehold.co/800x500/f8e1c0/8d2700?text="
+        +
+        encodeURIComponent(name);
+
+}
+
+
+/* =====================================================
+   CHANGE TYPE
+===================================================== */
+
+function changeType(id,type){
+
+    if(!cart[id]){
+
+        cart[id] = {
+            type:type,
+            qty:0
+        };
+
+    }
+    else{
+
+        cart[id].type = type;
+
+    }
+
+    renderSweets();
+
+}
+
+
+/* =====================================================
+   CHANGE QUANTITY
+===================================================== */
+
+function changeQuantity(id,amount){
+
+    if(!cart[id]){
+
+        cart[id] = {
+            type:"single",
+            qty:0
+        };
+
+    }
+
+
+    cart[id].qty =
+        Math.max(
+            0,
+            cart[id].qty + amount
+        );
+
+
+    renderSweets();
+
+}
+
+
+/* =====================================================
+   SET QUANTITY
+===================================================== */
+
+function setQuantity(id,value){
+
+    let qty =
+        parseInt(value);
+
+
+    if(
+        isNaN(qty) ||
+        qty < 0
+    ){
+
+        qty = 0;
+
+    }
+
+
+    if(!cart[id]){
+
+        cart[id] = {
+            type:"single",
+            qty:0
+        };
+
+    }
+
+
+    cart[id].qty = qty;
+
+    renderSweets();
+
+}
+
+
+/* =====================================================
+   ORDER SUMMARY
+===================================================== */
+
+function updateOrderSummary(){
+
+    let total = 0;
+
+    let html = "";
+
+
+    sweets.forEach(sweet=>{
+
+        const item =
+            cart[sweet.id];
+
+
+        if(
+            item &&
+            item.qty > 0
+        ){
+
+            const price =
+                item.type === "single"
+                ? sweet.single
+                : sweet.packPrice;
+
+
+            const itemTotal =
+                price * item.qty;
+
+
+            total += itemTotal;
+
+
+            html += `
+
+                <div class="selectedItem">
+
+                    🍬
+                    <b>${sweet.name}</b>
+
+                    —
+
+                    ${
+                        item.type === "single"
+                        ?
+                        `${item.qty} pieces`
+                        :
+                        `${item.qty} packs
+                        (${item.qty * sweet.packPieces}
+                        pieces)`
+                    }
+
+                    —
+
+                    ₹${itemTotal}
+
+                </div>
+
+            `;
+
+        }
+
+    });
+
+
+    if(!html){
+
+        html = `
+
+            <div class="selectedItem">
+
+                No sweets selected yet.
+
+            </div>
+
+        `;
+
+    }
+
+
+    document
+    .getElementById("selectedItems")
+    .innerHTML = html;
+
+
+    document
+    .getElementById("grandTotal")
+    .innerText = total;
+
+}
+
+
+/* =====================================================
+   WHATSAPP ORDER
+===================================================== */
+
+function placeOrder(){
+
+    let hasOrder = false;
+
+    let total = 0;
+
+    let message =
+        "🍬 *SWATHI HOME SWEETS ORDER*%0A%0A";
+
+
+    sweets.forEach(sweet=>{
+
+        const item =
+            cart[sweet.id];
+
+
+        if(
+            item &&
+            item.qty > 0
+        ){
+
+            hasOrder = true;
+
+
+            const price =
+                item.type === "single"
+                ? sweet.single
+                : sweet.packPrice;
+
+
+            const itemTotal =
+                price * item.qty;
+
+
+            total += itemTotal;
+
+
+            message +=
+                "🍬 " +
+                sweet.name +
+                "%0A";
+
+
+            message +=
+                "Type: " +
+                (
+                    item.type === "single"
+                    ? "Single"
+                    : "Pack"
+                ) +
+                "%0A";
+
+
+            message +=
+                "Quantity: " +
+                item.qty +
+                "%0A";
+
+
+            if(item.type === "pack"){
+
+                message +=
+                    "Total Pieces: " +
+                    (
+                        item.qty *
+                        sweet.packPieces
+                    ) +
+                    "%0A";
+
+            }
+
+
+            message +=
+                "Amount: ₹" +
+                itemTotal +
+                "%0A%0A";
+
+        }
+
+    });
+
+
+    if(!hasOrder){
+
+        alert(
+            "Please select at least one sweet."
+        );
+
+        return;
+
+    }
+
+
+    const name =
+        document
+        .getElementById("customerName")
+        .value
+        .trim();
+
+
+    const phone =
+        document
+        .getElementById("customerPhone")
+        .value
+        .trim();
+
+
+    const village =
+        document
+        .getElementById("village")
+        .value
+        .trim();
+
+
+    const pincode =
+        document
+        .getElementById("pincode")
+        .value
+        .trim();
+
+
+    const address =
+        document
+        .getElementById("address")
+        .value
+        .trim();
+
+
+    const notes =
+        document
+        .getElementById("notes")
+        .value
+        .trim();
+
+
+    if(!name){
+
+        alert("Enter customer name.");
+
+        return;
+
+    }
+
+
+    if(!/^[0-9]{10}$/.test(phone)){
+
+        alert(
+            "Enter valid 10 digit phone number."
+        );
+
+        return;
+
+    }
+
+
+    if(!village){
+
+        alert(
+            "Enter village / town."
+        );
+
+        return;
+
+    }
+
+
+    if(!/^[0-9]{6}$/.test(pincode)){
+
+        alert(
+            "Enter valid 6 digit pincode."
+        );
+
+        return;
+
+    }
+
+
+    if(!address){
+
+        alert(
+            "Enter full address."
+        );
+
+        return;
+
+    }
+
+
+    message +=
+        "💰 *TOTAL: ₹" +
+        total +
+        "*%0A%0A";
+
+
+    message +=
+        "👤 Name: " +
+        encodeURIComponent(name) +
+        "%0A";
+
+
+    message +=
+        "📱 Phone: " +
+        encodeURIComponent(phone) +
+        "%0A";
+
+
+    message +=
+        "📍 Village/Town: " +
+        encodeURIComponent(village) +
+        "%0A";
+
+
+    message +=
+        "📮 Pincode: " +
+        encodeURIComponent(pincode) +
+        "%0A";
+
+
+    message +=
+        "🏠 Address: " +
+        encodeURIComponent(address) +
+        "%0A";
+
+
+    message +=
+        "📝 Instructions: " +
+        encodeURIComponent(notes || "None");
+
+
+    /* WhatsApp shop number */
+
+    const whatsappNumber =
+        "917075152717";
+
+
+    const whatsappURL =
+        "https://wa.me/" +
+        whatsappNumber +
+        "?text=" +
+        message;
+
+
+    window.open(
+        whatsappURL,
+        "_blank"
+    );
+
+
+    /* Save order */
+
+    const order = {
+
+        date:
+            new Date().toLocaleString(),
+
+        customer:name,
+
+        phone:phone,
+
+        village:village,
+
+        pincode:pincode,
+
+        address:address,
+
+        notes:notes,
+
+        total:total
+
+    };
+
+
+    const oldOrders =
+        JSON.parse(
+            localStorage.getItem(
+                "swathiOrders"
+            )
+            ||
+            "[]"
+        );
+
+
+    oldOrders.push(order);
+
+
+    localStorage.setItem(
+        "swathiOrders",
+        JSON.stringify(oldOrders)
+    );
+
+}
+
+
+/* =====================================================
+   RATING
+===================================================== */
+
+function setRating(value){
+
+    currentRating = value;
+
+
+    document
+    .querySelectorAll(".ratingStar")
+    .forEach(
+        (star,index)=>{
+
+            star.classList.toggle(
+                "active",
+                index < value
+            );
+
+        }
+    );
+
+}
+
+
+function submitRating(){
+
+    const review =
+        document
+        .getElementById("review")
+        .value
+        .trim();
+
+
+    if(currentRating === 0){
+
+        alert(
+            "Please select your star rating."
+        );
+
+        return;
+
+    }
+
+
+    const ratingData = {
+
+        rating:currentRating,
+
+        review:review,
+
+        date:
+            new Date()
+            .toLocaleString()
+
+    };
+
+
+    localStorage.setItem(
+        "swathiRating",
+        JSON.stringify(ratingData)
+    );
+
+
+    document
+    .getElementById("ratingMessage")
+    .innerText =
+        "Thank you! You rated us "
+        +
+        currentRating
+        +
+        "/5 ⭐";
+
+
+    document
+    .getElementById("review")
+    .value = "";
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+function goHome(){
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+function goSweets(){
+
+    document
+    .getElementById("sweetsGrid")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+function goOrder(){
+
+    document
+    .getElementById("orderSection")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+function goRating(){
+
+    document
+    .getElementById("ratingSection")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   START WITH ENTER PAGE
+===================================================== */
+
+window.onload = function(){
+
+    document
+    .getElementById("enterPage")
+    .classList
+    .remove("hidden");
+
+    document
+    .getElementById("loginPage")
+    .classList
+    .add("hidden");
+
+    document
+    .getElementById("app")
+    .classList
+    .add("hidden");
+
+    document
+    .getElementById("bottomNav")
+    .classList
+    .add("hidden");
+
+};
+
+</script>
+
+</body>
+</html>
